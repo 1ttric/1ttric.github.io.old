@@ -36,7 +36,6 @@ randomErrorEmoji();
 
 // Random subtitle
 const randomSubtitle = function(){
-  const subtitles = ["~ Halt and Catch Fire ~"];
   const rand = subtitles[Math.floor(Math.random() * subtitles.length)];
   if (subtitle && !subtitle.textContent) {
     subtitle.textContent = rand;
