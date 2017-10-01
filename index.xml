@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vesey (dot) tech</title>
-    <link>https://1ttric.github.io/</link>
+    <link>https://vesey.tech/</link>
     <description>Recent content on vesey (dot) tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Wed, 09 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://1ttric.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vesey.tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Links</title>
-      <link>https://1ttric.github.io/links/</link>
+      <link>https://vesey.tech/links/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://1ttric.github.io/links/</guid>
+      <guid>https://vesey.tech/links/</guid>
       <description></description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://1ttric.github.io/about/</link>
+      <link>https://vesey.tech/about/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://1ttric.github.io/about/</guid>
+      <guid>https://vesey.tech/about/</guid>
       <description>Hello! I&amp;rsquo;m a Boston-based developer with knowledge in many fields. This is my personal blog to document projects I&amp;rsquo;ve been working on.</description>
     </item>
     
     <item>
       <title>test post please ignore</title>
-      <link>https://1ttric.github.io/post/testpostpleaseignore/</link>
+      <link>https://vesey.tech/post/testpostpleaseignore/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://1ttric.github.io/post/testpostpleaseignore/</guid>
+      <guid>https://vesey.tech/post/testpostpleaseignore/</guid>
       <description>I&amp;rsquo;m no good at writing sample / filler text
 ((MathJax))
 (not MathJax)

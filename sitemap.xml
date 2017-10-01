@@ -3,57 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://1ttric.github.io/links/</loc>
+    <loc>https://vesey.tech/links/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/about/</loc>
+    <loc>https://vesey.tech/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/post/testpostpleaseignore/</loc>
+    <loc>https://vesey.tech/post/testpostpleaseignore/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/categories/</loc>
+    <loc>https://vesey.tech/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/tags/markdown/</loc>
-    <lastmod>2017-10-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://1ttric.github.io/tags/mathjax/</loc>
+    <loc>https://vesey.tech/tags/markdown/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/post/</loc>
+    <loc>https://vesey.tech/tags/mathjax/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/tags/</loc>
+    <loc>https://vesey.tech/post/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/tags/test/</loc>
+    <loc>https://vesey.tech/tags/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://1ttric.github.io/</loc>
+    <loc>https://vesey.tech/tags/test/</loc>
+    <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vesey.tech/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
