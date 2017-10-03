@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://vesey.tech/post/markbot/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vesey.tech/post/testpostpleaseignore/</loc>
     <lastmod>2017-10-01T00:00:00+00:00</lastmod>
   </url>
@@ -35,8 +40,26 @@
   </url>
   
   <url>
+    <loc>https://vesey.tech/tags/ml/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vesey.tech/tags/nlp/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://vesey.tech/post/</loc>
-    <lastmod>2017-10-01T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vesey.tech/tags/python/</loc>
+    <lastmod>2017-10-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

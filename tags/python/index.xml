@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on vesey (dot) tech</title>
-    <link>https://vesey.tech/post/</link>
-    <description>Recent content in Posts on vesey (dot) tech</description>
+    <title>Python on vesey (dot) tech</title>
+    <link>https://vesey.tech/tags/python/</link>
+    <description>Recent content in Python on vesey (dot) tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© CC BY-NC 4.0</copyright>
     <lastBuildDate>Mon, 02 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://vesey.tech/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vesey.tech/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,22 +20,6 @@
       <guid>https://vesey.tech/post/markbot/</guid>
       <description>I&amp;rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.
 Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic character-level RNNs and trained them on all sorts of text corpora, but this time I wanted to try something different, and utilize word embeddings to try and produce a more coherent Mark-based chatbot.</description>
-    </item>
-    
-    <item>
-      <title>test post please ignore</title>
-      <link>https://vesey.tech/post/testpostpleaseignore/</link>
-      <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://vesey.tech/post/testpostpleaseignore/</guid>
-      <description>I&amp;rsquo;m no good at writing sample / filler text
-((MathJax))
-(not MathJax)
-$$MORE\ MathJax$$
-$NO MathJax$
-Look, a list!
- foo bar baz  And here&amp;rsquo;s some code! 👍
-$(function(){ $(&amp;#39;div&amp;#39;).html(&amp;#39;I am a div.&amp;#39;); });  &amp;hellip;I  don&amp;rsquo;t  actually  like  js</description>
     </item>
     
   </channel>

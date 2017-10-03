@@ -6,7 +6,7 @@
     <description>Recent content in Tags on vesey (dot) tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
+    <copyright>© CC BY-NC 4.0</copyright>
     <lastBuildDate>Sun, 01 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vesey.tech/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -27,6 +27,33 @@
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://vesey.tech/tags/mathjax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ml</title>
+      <link>https://vesey.tech/tags/ml/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://vesey.tech/tags/ml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nlp</title>
+      <link>https://vesey.tech/tags/nlp/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://vesey.tech/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://vesey.tech/tags/python/</link>
+      <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://vesey.tech/tags/python/</guid>
       <description></description>
     </item>
     
