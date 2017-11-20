@@ -25,7 +25,7 @@ $$MORE\ MathJax$$
 $NO MathJax$
 Look, a list!
  foo bar baz  And here&amp;rsquo;s some code! 👍
-$(function(){$(&amp;#39;div&amp;#39;).html(&amp;#39;I am a div.&amp;#39;);});  &amp;hellip;I  don&amp;rsquo;t  actually  like  js</description>
+$(function(){ $(&amp;#39;div&amp;#39;).html(&amp;#39;I am a div.&amp;#39;); });  &amp;hellip;I  don&amp;rsquo;t  actually  like  js</description>
     </item>
     
   </channel>
