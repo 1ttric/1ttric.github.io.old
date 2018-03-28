@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Work on vesey (dot) tech</title>
+    <link>https://vesey.tech/tags/work/</link>
+    <description>Recent content in Work on vesey (dot) tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© CC BY-NC 4.0</copyright>
+    <lastBuildDate>Sat, 10 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vesey.tech/tags/work/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VM host upgrade</title>
+      <link>https://vesey.tech/post/serverreport/</link>
+      <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://vesey.tech/post/serverreport/</guid>
+      <description>This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host
+VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEdge R830   Compute Intel Xeon E5-4628L v4 (x4)   Memory Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)   Storage PERC H330 integrated controller    Samsung SSD 850 EVO 1TB (x1)    VM Capability CPU Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads This server supports Intel Xeon E5-4600 v4 family processors.</description>
+    </item>
+    
+  </channel>
+</rss>
