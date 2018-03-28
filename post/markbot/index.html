@@ -13,6 +13,7 @@
 
 
 
+
   
   <meta name="author" content="Will Vesey" />
   <meta name="description" content="I&amp;rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.
@@ -25,8 +26,16 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
     <meta name="twitter:title" content="MarkBot adventures in ML and NLP" />
     <meta name="twitter:description" content="I&amp;rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.
 Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic character-level RNNs and trained them on all sorts of text corpora, but this time I wanted to try something different, and utilize word embeddings to try and produce a more coherent Mark-based chatbot." />
-    <meta name="twitter:image" content="https://vesey.tech/img/avatar.jpg" />
+    <meta name="twitter:image" content="https://www.vesey.tech/img/avatar.jpg" />
   
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="MarkBot adventures in ML and NLP" />
+  <meta property="og:description" content="I&amp;rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.
+Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic character-level RNNs and trained them on all sorts of text corpora, but this time I wanted to try something different, and utilize word embeddings to try and produce a more coherent Mark-based chatbot." />
+  <meta property="og:url" content="https://www.vesey.tech/post/markbot/" />
+  <meta property="og:image" content="https://www.vesey.tech/img/avatar.jpg" />
 
 
 
@@ -34,8 +43,8 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
 <meta name="generator" content="Hugo 0.37.1" />
 
 
-<link rel="canonical" href="https://vesey.tech/post/markbot/" />
-<link rel="alternative" href="https://vesey.tech/index.xml" title="vesey (dot) tech" type="application/atom+xml" />
+<link rel="canonical" href="https://www.vesey.tech/post/markbot/" />
+<link rel="alternative" href="https://www.vesey.tech/index.xml" title="vesey (dot) tech" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -60,18 +69,18 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://vesey.tech/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://vesey.tech/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://vesey.tech/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://vesey.tech/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://vesey.tech/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://vesey.tech/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://www.vesey.tech/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.vesey.tech/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.vesey.tech/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://www.vesey.tech/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://www.vesey.tech/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://www.vesey.tech/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
 
-<link rel="stylesheet" href="https://vesey.tech/css/bundle.css" />
+<link rel="stylesheet" href="https://www.vesey.tech/css/bundle.css" />
 
 
   
@@ -104,7 +113,7 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
     
     
   <header class="site-header">
-  <img class="avatar" src="https://vesey.tech/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://www.vesey.tech/img/avatar.jpg" alt="Avatar">
   
   <h2 class="title">vesey (dot) tech</h2>
   
@@ -119,11 +128,28 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
       
       
       
-        <li class="menu-item  is-active"><a href="https://vesey.tech/">Home</a></li>
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://www.vesey.tech/">Home</a>
+          </li>
       
-        <li class="menu-item "><a href="https://vesey.tech/links/">Links</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://www.vesey.tech/links/">Links</a>
+          </li>
       
-        <li class="menu-item "><a href="https://vesey.tech/about/">About</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://www.vesey.tech/about/">About</a>
+          </li>
       
     </ul>
   </nav>
@@ -181,7 +207,7 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
       
 
       <li class="social-item">
-        <a href="https://vesey.tech/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://www.vesey.tech/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
@@ -193,7 +219,7 @@ Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic char
       <h1 class="post-title">MarkBot adventures in ML and NLP</h1>
       <p class="post-meta">@Will Vesey · Oct 2, 2017 · 10 min read</p>
     </header>
-    <article id="post-content" class="post-content">
+    <article class="post-content">
 
 <p>I&rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.</p>
 
@@ -595,11 +621,11 @@ i do n't know what i 'm doing
       
       <ul class="post-tags">
         
-          <li><a href="https://vesey.tech/tags/python"><span class="tag">Python</span></a></li>
+          <li><a href="https://www.vesey.tech/tags/python"><span class="tag">Python</span></a></li>
         
-          <li><a href="https://vesey.tech/tags/ml"><span class="tag">ML</span></a></li>
+          <li><a href="https://www.vesey.tech/tags/ml"><span class="tag">ML</span></a></li>
         
-          <li><a href="https://vesey.tech/tags/nlp"><span class="tag">NLP</span></a></li>
+          <li><a href="https://www.vesey.tech/tags/nlp"><span class="tag">NLP</span></a></li>
         
       </ul>
       
@@ -622,13 +648,28 @@ i do n't know what i 'm doing
 <script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
 <script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$$','$$'], ['\(\(','\)\)']]},
-  elements: ['post-content']
-});
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
 </script>
 
-<script src="https://vesey.tech/js/bundle.js"></script>
+<script src="https://www.vesey.tech/js/bundle.js"></script>
 
 
 <script>

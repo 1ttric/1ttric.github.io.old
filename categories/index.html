@@ -6,13 +6,12 @@
 
   
   <title>
-  Category → 
-  
-   | vesey (dot) tech
+  Tags | vesey (dot) tech
 </title>
 
   
   
+
 
 
 
@@ -26,7 +25,14 @@
   <meta name="twitter:site" content="@gohugoio" />
   <meta name="twitter:title" content="vesey (dot) tech" />
   <meta name="twitter:description" content="My personal tech blog" />
-  <meta name="twitter:image" content="https://vesey.tech/img/avatar.jpg" />
+  <meta name="twitter:image" content="https://www.vesey.tech/img/avatar.jpg" />
+
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="vesey (dot) tech" />
+  <meta property="og:description" content="My personal tech blog" />
+  <meta property="og:url" content="https://www.vesey.tech/categories/" />
+  <meta property="og:image" content="https://www.vesey.tech/img/avatar.jpg" />
 
 
 
@@ -34,8 +40,8 @@
 <meta name="generator" content="Hugo 0.37.1" />
 
 
-<link rel="canonical" href="https://vesey.tech/categories/" />
-<link rel="alternative" href="https://vesey.tech/index.xml" title="vesey (dot) tech" type="application/atom+xml" />
+<link rel="canonical" href="https://www.vesey.tech/categories/" />
+<link rel="alternative" href="https://www.vesey.tech/index.xml" title="vesey (dot) tech" type="application/atom+xml" />
 
 
 <meta name="renderer" content="webkit" />
@@ -60,18 +66,18 @@
 <meta name='msapplication-navbutton-color' content="#5fbf5e" />
 <meta name="msapplication-TileColor" content="#5fbf5e" />
 <meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://vesey.tech/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://vesey.tech/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://vesey.tech/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://vesey.tech/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://vesey.tech/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://vesey.tech/img/safari-pinned-tab.svg" color="#5fbf5e" />
+<link rel="icon" href="https://www.vesey.tech/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.vesey.tech/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.vesey.tech/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://www.vesey.tech/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://www.vesey.tech/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://www.vesey.tech/img/safari-pinned-tab.svg" color="#5fbf5e" />
 
 
 
 <link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
 
-<link rel="stylesheet" href="https://vesey.tech/css/bundle.css" />
+<link rel="stylesheet" href="https://www.vesey.tech/css/bundle.css" />
 
 
   
@@ -102,7 +108,7 @@
     
     
   <header class="site-header">
-  <img class="avatar" src="https://vesey.tech/img/avatar.jpg" alt="Avatar">
+  <img class="avatar" src="https://www.vesey.tech/img/avatar.jpg" alt="Avatar">
   
   <h2 class="title">vesey (dot) tech</h2>
   
@@ -117,11 +123,26 @@
       
       
       
-        <li class="menu-item "><a href="https://vesey.tech/">Home</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://www.vesey.tech/">Home</a>
+          </li>
       
-        <li class="menu-item "><a href="https://vesey.tech/links/">Links</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://www.vesey.tech/links/">Links</a>
+          </li>
       
-        <li class="menu-item "><a href="https://vesey.tech/about/">About</a></li>
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://www.vesey.tech/about/">About</a>
+          </li>
       
     </ul>
   </nav>
@@ -179,23 +200,21 @@
       
 
       <li class="social-item">
-        <a href="https://vesey.tech/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+        <a href="https://www.vesey.tech/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
       </li>
 
     </ul>
   </nav>
 </header>
 
-  <section class="main post-list">
-    <header class="list-header offscreen">
-      <h2 class="list-label">Posts List</h2>
+  <section class="main post-detail terms-list">
+    <header class="post-header">
+      <h1 class="post-title">Categories</h1>
     </header>
-    
-    
-      <p>There's nothing here.<br>Create an interesting post with the command:</p>
-      <p><code>$ hugo new post/hello-world.md</code></p>
-    
-    
+    <div class="tags-cloud">
+      
+      
+    </div>
   </section>
   <footer class="site-footer">
   <p>© 2017-2018 vesey (dot) tech</p>
@@ -208,13 +227,28 @@
 <script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
 <script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$$','$$'], ['\(\(','\)\)']]},
-  elements: ['post-content']
-});
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
 </script>
 
-<script src="https://vesey.tech/js/bundle.js"></script>
+<script src="https://www.vesey.tech/js/bundle.js"></script>
 
 
 <script>

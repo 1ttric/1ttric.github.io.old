@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on vesey (dot) tech</title>
-    <link>https://vesey.tech/tags/</link>
+    <link>https://www.vesey.tech/tags/</link>
     <description>Recent content in Tags on vesey (dot) tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© CC BY-NC 4.0</copyright>
     <lastBuildDate>Sat, 10 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://vesey.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.vesey.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hardware</title>
-      <link>https://vesey.tech/tags/hardware/</link>
+      <link>https://www.vesey.tech/tags/hardware/</link>
       <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/hardware/</guid>
+      <guid>https://www.vesey.tech/tags/hardware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Markdown</title>
-      <link>https://vesey.tech/tags/markdown/</link>
+      <link>https://www.vesey.tech/tags/markdown/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/markdown/</guid>
+      <guid>https://www.vesey.tech/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mathjax</title>
-      <link>https://vesey.tech/tags/mathjax/</link>
+      <link>https://www.vesey.tech/tags/mathjax/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/mathjax/</guid>
+      <guid>https://www.vesey.tech/tags/mathjax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ml</title>
-      <link>https://vesey.tech/tags/ml/</link>
+      <link>https://www.vesey.tech/tags/ml/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/ml/</guid>
+      <guid>https://www.vesey.tech/tags/ml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nlp</title>
-      <link>https://vesey.tech/tags/nlp/</link>
+      <link>https://www.vesey.tech/tags/nlp/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/nlp/</guid>
+      <guid>https://www.vesey.tech/tags/nlp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://vesey.tech/tags/python/</link>
+      <link>https://www.vesey.tech/tags/python/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/python/</guid>
+      <guid>https://www.vesey.tech/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test</title>
-      <link>https://vesey.tech/tags/test/</link>
+      <link>https://www.vesey.tech/tags/test/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/test/</guid>
+      <guid>https://www.vesey.tech/tags/test/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Work</title>
-      <link>https://vesey.tech/tags/work/</link>
+      <link>https://www.vesey.tech/tags/work/</link>
       <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/tags/work/</guid>
+      <guid>https://www.vesey.tech/tags/work/</guid>
       <description></description>
     </item>
     

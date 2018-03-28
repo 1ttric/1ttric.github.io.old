@@ -2,42 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on vesey (dot) tech</title>
-    <link>https://vesey.tech/post/</link>
+    <link>https://www.vesey.tech/post/</link>
     <description>Recent content in Posts on vesey (dot) tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© CC BY-NC 4.0</copyright>
     <lastBuildDate>Sat, 10 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://vesey.tech/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.vesey.tech/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>VM host upgrade</title>
-      <link>https://vesey.tech/post/serverreport/</link>
+      <link>https://www.vesey.tech/post/serverreport/</link>
       <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/post/serverreport/</guid>
+      <guid>https://www.vesey.tech/post/serverreport/</guid>
       <description>This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host
 VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEdge R830   Compute Intel Xeon E5-4628L v4 (x4)   Memory Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)   Storage PERC H330 integrated controller    Samsung SSD 850 EVO 1TB (x1)    VM Capability CPU Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads This server supports Intel Xeon E5-4600 v4 family processors.</description>
     </item>
     
     <item>
       <title>MarkBot adventures in ML and NLP</title>
-      <link>https://vesey.tech/post/markbot/</link>
+      <link>https://www.vesey.tech/post/markbot/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/post/markbot/</guid>
+      <guid>https://www.vesey.tech/post/markbot/</guid>
       <description>I&amp;rsquo;ve always had a love for large datasets and the interesting things one can do with them, so when my roommate sent me his entire Google Hangouts and Facebook chat history, I knew what I had to do.
 Enter MarkBot Goals In the past, I&amp;rsquo;ve implemented plenty of basic character-level RNNs and trained them on all sorts of text corpora, but this time I wanted to try something different, and utilize word embeddings to try and produce a more coherent Mark-based chatbot.</description>
     </item>
     
     <item>
       <title>test post please ignore</title>
-      <link>https://vesey.tech/post/testpostpleaseignore/</link>
+      <link>https://www.vesey.tech/post/testpostpleaseignore/</link>
       <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://vesey.tech/post/testpostpleaseignore/</guid>
+      <guid>https://www.vesey.tech/post/testpostpleaseignore/</guid>
       <description>I&amp;rsquo;m no good at writing sample / filler text
 ((MathJax))
 (not MathJax)
