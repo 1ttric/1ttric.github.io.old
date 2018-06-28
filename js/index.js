@@ -1,4 +1,4 @@
-import './css/main.css';
+import './css/index.css';
 
 // Selected DOM elements
 const html = document.querySelector('html');
