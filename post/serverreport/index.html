@@ -40,7 +40,7 @@ VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEd
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.42.2" />
 
 
 <link rel="canonical" href="https://www.vesey.tech/post/serverreport/" />
@@ -80,7 +80,7 @@ VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEd
 
 <link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
 
-<link rel="stylesheet" href="https://www.vesey.tech/css/bundle.css" />
+<link rel="stylesheet" href="https://www.vesey.tech/css/bundle.ff02473a9a.css" />
 
 
   
@@ -270,19 +270,90 @@ VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEd
 <p>Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads
 This server supports Intel Xeon E5-4600 v4 family processors.</p>
 
-<p>Efficiency of CPUs in this family:
-Model        |Threads |Recommended customer price |$/thread
-&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&ndash;
-E5-4610 v4   |20      |<strong>$1219</strong>                  |<strong>60.95</strong>
-E5-4620 v4   |20      |$1668                      |83.40
-E5-4627 v4   |10      |$2225                      |222.50
-<em>E5-4628L v4</em>|<em>28</em>    |<em>$2535</em>                    |<em>90.54</em>
-E5-4640 v4   |24      |$2837                      |118.21
-E5-4650 v4   |28      |$3838                      |137.07
-E5-4655 v4   |16      |$4616                      |288.50
-E5-4660 v4   |32      |$4727                      |147.72
-E5-4667 v4   |36      |$5729                      |159.14
-E5-4669 v4   |<strong>44</strong>  |$7007                      |159.25</p>
+<p>efficiency of CPUs in this family:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Threads</th>
+<th>Recommended customer price</th>
+<th>$/thread</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>E5-4610 v4</td>
+<td>20</td>
+<td><strong>$1219</strong></td>
+<td><strong>60.95</strong></td>
+</tr>
+
+<tr>
+<td>E5-4620 v4</td>
+<td>20</td>
+<td>$1668</td>
+<td>83.40</td>
+</tr>
+
+<tr>
+<td>E5-4627 v4</td>
+<td>10</td>
+<td>$2225</td>
+<td>222.50</td>
+</tr>
+
+<tr>
+<td><em>E5-4628L v4</em></td>
+<td><em>28</em></td>
+<td><em>$2535</em></td>
+<td><em>90.54</em></td>
+</tr>
+
+<tr>
+<td>E5-4640 v4</td>
+<td>24</td>
+<td>$2837</td>
+<td>118.21</td>
+</tr>
+
+<tr>
+<td>E5-4650 v4</td>
+<td>28</td>
+<td>$3838</td>
+<td>137.07</td>
+</tr>
+
+<tr>
+<td>E5-4655 v4</td>
+<td>16</td>
+<td>$4616</td>
+<td>288.50</td>
+</tr>
+
+<tr>
+<td>E5-4660 v4</td>
+<td>32</td>
+<td>$4727</td>
+<td>147.72</td>
+</tr>
+
+<tr>
+<td>E5-4667 v4</td>
+<td>36</td>
+<td>$5729</td>
+<td>159.14</td>
+</tr>
+
+<tr>
+<td>E5-4669 v4</td>
+<td><strong>44</strong></td>
+<td>$7007</td>
+<td>159.25</td>
+</tr>
+</tbody>
+</table>
 
 <p>As one VM uses two threads and this does not change, for our purposes $/thread is proportional to $/VM</p>
 
@@ -681,21 +752,21 @@ Storage is (relative to compute and RAM) cheap and easy to add, especially with 
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 
-<span class="n">COMPARISON_FILE</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;/Users/wvesey/Downloads/Intel_ARK_ComparisonChart_2018_03_07.xml&#34;</span>
+<span class="n">COMPARISON_FILE</span> <span class="o">=</span> <span class="s2">&#34;/Users/wvesey/Downloads/Intel_ARK_ComparisonChart_2018_03_07.xml&#34;</span>
 
 <span class="c1"># Load and parse the xml file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">COMPARISON_FILE</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">Soup</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;xml&#34;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">COMPARISON_FILE</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Soup</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&#34;xml&#34;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">ws</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Worksheet&#34;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Row&#34;</span><span class="p">):</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;Worksheet&#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s2">&#34;Row&#34;</span><span class="p">):</span>
     <span class="n">row_data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Cell&#34;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s2">&#34;Cell&#34;</span><span class="p">):</span>
         <span class="n">cell_data</span> <span class="o">=</span> <span class="p">(</span><span class="bp">None</span> <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">Data</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">cell</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
         <span class="n">row_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell_data</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Some rows don&#39;t have useful information</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Name&#34;</span>  <span class="c1"># Processor names have no reference field</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Name&#34;</span>  <span class="c1"># Processor names have no reference field</span>
 
 <span class="c1"># Transform the data into a dataframe</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)]</span>  <span class="c1"># Transpose to fix xml data being backwards</span>
@@ -703,13 +774,13 @@ Storage is (relative to compute and RAM) cheap and easy to add, especially with 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">colnames</span><span class="p">)</span>
 
 <span class="c1"># Begin selecting interesting processors, discounting those with no price data</span>
-<span class="n">interesting</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">!=</span> <span class="sa"></span><span class="s2">&#34;N/A&#34;</span><span class="p">]</span>
+<span class="n">interesting</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&#34;N/A&#34;</span><span class="p">]</span>
 <span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">avg_prices</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Take the center of price data ranges such as &#39;$2600 - $2750&#39;</span>
-<span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">interesting</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">price</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34; - &#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">prices</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34; - &#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">price</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34; - &#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">prices</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34; - &#34;</span><span class="p">)</span>
         <span class="n">avg_price</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">avg_price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
@@ -717,25 +788,25 @@ Storage is (relative to compute and RAM) cheap and easy to add, especially with 
 <span class="n">avg_prices</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">avg_prices</span><span class="p">)</span>
 
 <span class="c1"># Calculate $/thread</span>
-<span class="n">dollars_per_thread</span> <span class="o">=</span> <span class="n">avg_prices</span> <span class="o">/</span> <span class="n">interesting</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">dollars_per_thread</span> <span class="o">=</span> <span class="n">avg_prices</span> <span class="o">/</span> <span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="c1"># Append calculated data to the dataframe</span>
-<span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="sa"></span><span class="s2">&#34;$/Thread&#34;</span><span class="p">:</span> <span class="n">dollars_per_thread</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Price&#34;</span><span class="p">:</span> <span class="n">avg_prices</span><span class="p">})</span>
+<span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">:</span> <span class="n">dollars_per_thread</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">:</span> <span class="n">avg_prices</span><span class="p">})</span>
 
 <span class="c1"># Select processors with &gt;28 threads and a $/thread value of &lt;100</span>
-<span class="n">to_print</span> <span class="o">=</span> <span class="n">interesting</span><span class="p">[(</span><span class="n">interesting</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">)</span> <span class="o">&amp;</span> 
-                       <span class="p">(</span><span class="n">interesting</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)]</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">interesting</span><span class="p">[(</span><span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">)</span> <span class="o">&amp;</span> 
+                       <span class="p">(</span><span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)]</span>
 <span class="n">to_print</span> <span class="o">=</span> <span class="n">to_print</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="c1"># Print succinct information about the processors</span>
-<span class="n">to_print</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;${:,.2f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
-<span class="n">to_print</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Price&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;${:,.0f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="s2">&#34;${:,.2f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;Price&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="s2">&#34;${:,.0f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
 <span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">to_print</span> <span class="o">=</span> <span class="n">to_print</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Name&#34;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">to_print</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;$/Thread&#34;</span><span class="p">],</span> 
-                         <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;Price/Thread&#34;</span><span class="p">],</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">to_print</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&#34;Name&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">to_print</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="s2">&#34;$/Thread&#34;</span><span class="p">],</span> 
+                         <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="s2">&#34;Price/Thread&#34;</span><span class="p">],</span>
                          <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                         <span class="n">justify</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;left&#34;</span><span class="p">))</span></code></pre></div></article>
+                         <span class="n">justify</span><span class="o">=</span><span class="s2">&#34;left&#34;</span><span class="p">))</span></code></pre></div></article>
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -747,7 +818,7 @@ Storage is (relative to compute and RAM) cheap and easy to add, especially with 
       </ul>
       
       <p class="post-copyright">
-        © CC BY-NC 4.0
+        © CC BY-NC 4.0This post was published <strong>110</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -786,15 +857,19 @@ Storage is (relative to compute and RAM) cheap and easy to add, especially with 
   });
 </script>
 
-<script src="https://www.vesey.tech/js/bundle.js"></script>
+<script src="https://www.vesey.tech/js/bundle.d1288006cf.js"></script>
 
 
 <script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-107326162-1', 'auto');
-ga('send', 'pageview');
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-107326162-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
