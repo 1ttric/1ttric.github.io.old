@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>VM host upgrade</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Will Vesey" />
+  <meta name="description" content="This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host
+VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEdge R830   Compute Intel Xeon E5-4628L v4 (x4)   Memory Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)   Storage PERC H330 integrated controller    Samsung SSD 850 EVO 1TB (x1)    VM Capability CPU Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads This server supports Intel Xeon E5-4600 v4 family processors." />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gohugoio" />
+    <meta name="twitter:title" content="VM host upgrade" />
+    <meta name="twitter:description" content="This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host
+VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEdge R830   Compute Intel Xeon E5-4628L v4 (x4)   Memory Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)   Storage PERC H330 integrated controller    Samsung SSD 850 EVO 1TB (x1)    VM Capability CPU Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads This server supports Intel Xeon E5-4600 v4 family processors." />
+    <meta name="twitter:image" content="https://www.vesey.tech/images/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="VM host upgrade" />
+  <meta property="og:description" content="This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host
+VM Host Upgrade/Build Report Current Specs    Type Model     Server Dell PowerEdge R830   Compute Intel Xeon E5-4628L v4 (x4)   Memory Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)   Storage PERC H330 integrated controller    Samsung SSD 850 EVO 1TB (x1)    VM Capability CPU Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads This server supports Intel Xeon E5-4600 v4 family processors." />
+  <meta property="og:url" content="https://www.vesey.tech/post/serverreport/" />
+  <meta property="og:image" content="https://www.vesey.tech/images/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.42.2" />
+
+
+<link rel="canonical" href="https://www.vesey.tech/post/serverreport/" />
+<link rel="alternative" href="/index.xml" title="vesey (dot) tech" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+
+
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="vesey (dot) tech" />
+<meta name="msapplication-tooltip" content="vesey (dot) tech" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/images/tile-image-windows.png" />
+<link rel="icon" href="/images/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="/images/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="/images/touch-icon-apple.png" />
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="/css/index.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="/img/avatar.png" alt="Avatar">
+  
+  <h2 class="title">vesey (dot) tech</h2>
+  
+  <p class="subtitle"></p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="/links/">Links</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="/about/">About</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+
+      
+      <li class="social-item">
+        <a href="//github.com/1ttric" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.facebook.com/will.vesey" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      <li class="social-item">
+        <a href="//www.instagram.com/will.vesey" title="Instagram"><span class="icon icon-instagram"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">VM host upgrade</h1>
+      <p class="post-meta">@Will Vesey · Mar 10, 2018 · 8 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>This is a report I was tasked to write for work, to spec new parts and potential new builds for the upgrade of an all-SSD VM host</p>
+
+<h1 id="vm-host-upgrade-build-report">VM Host Upgrade/Build Report</h1>
+
+<h1 id="current-specs">Current Specs</h1>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Model</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Server</td>
+<td>Dell PowerEdge R830</td>
+</tr>
+
+<tr>
+<td>Compute</td>
+<td>Intel Xeon E5-4628L v4 (x4)</td>
+</tr>
+
+<tr>
+<td>Memory</td>
+<td>Samsung M393A4K40CB1-CRC 2Rx4 ECC RDIMM DDR4 2400 32GB (x6)</td>
+</tr>
+
+<tr>
+<td>Storage</td>
+<td>PERC H330 integrated controller</td>
+</tr>
+
+<tr>
+<td><nbsp></td>
+<td>Samsung SSD 850 EVO 1TB (x1)</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="vm-capability">VM Capability</h1>
+
+<h2 id="cpu">CPU</h2>
+
+<p>Assigning 2 threads to each VM, consider each of the 4 CPUs has 28 threads
+This server supports Intel Xeon E5-4600 v4 family processors.</p>
+
+<p>efficiency of CPUs in this family:</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Threads</th>
+<th>Recommended customer price</th>
+<th>$/thread</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>E5-4610 v4</td>
+<td>20</td>
+<td><strong>$1219</strong></td>
+<td><strong>60.95</strong></td>
+</tr>
+
+<tr>
+<td>E5-4620 v4</td>
+<td>20</td>
+<td>$1668</td>
+<td>83.40</td>
+</tr>
+
+<tr>
+<td>E5-4627 v4</td>
+<td>10</td>
+<td>$2225</td>
+<td>222.50</td>
+</tr>
+
+<tr>
+<td><em>E5-4628L v4</em></td>
+<td><em>28</em></td>
+<td><em>$2535</em></td>
+<td><em>90.54</em></td>
+</tr>
+
+<tr>
+<td>E5-4640 v4</td>
+<td>24</td>
+<td>$2837</td>
+<td>118.21</td>
+</tr>
+
+<tr>
+<td>E5-4650 v4</td>
+<td>28</td>
+<td>$3838</td>
+<td>137.07</td>
+</tr>
+
+<tr>
+<td>E5-4655 v4</td>
+<td>16</td>
+<td>$4616</td>
+<td>288.50</td>
+</tr>
+
+<tr>
+<td>E5-4660 v4</td>
+<td>32</td>
+<td>$4727</td>
+<td>147.72</td>
+</tr>
+
+<tr>
+<td>E5-4667 v4</td>
+<td>36</td>
+<td>$5729</td>
+<td>159.14</td>
+</tr>
+
+<tr>
+<td>E5-4669 v4</td>
+<td><strong>44</strong></td>
+<td>$7007</td>
+<td>159.25</td>
+</tr>
+</tbody>
+</table>
+
+<p>As one VM uses two threads and this does not change, for our purposes $/thread is proportional to $/VM</p>
+
+<p>Current CPU capability: (28*<sup>4</sup>&frasl;<sub>2</sub> =) 56 VMs</p>
+
+<p>Maximum CPU capability: (44*<sup>4</sup>&frasl;<sub>2</sub> =) 88 VMs</p>
+
+<h2 id="ram">RAM</h2>
+
+<p>Continuing the current memory configuration, we can populate 2 of 3 DIMMs per channel per processor</p>
+
+<p>With 4 processors, we will max out at 32GB * 32 = 1TB RAM
+In an ideal world, with 2GB RAM per VM, we can run 500 VMs on the box</p>
+
+<p>Current RAM capability: (32GB*6/2GB =) 96 VMs</p>
+
+<p>Maximum RAM capability: (1TB/2GB =) 500 VMs</p>
+
+<h2 id="storage">Storage</h2>
+
+<p>As of the time of this writing, each VM is using between 1.5 and 2.7 GB of storage, for a total of 165GB across all VMs
+With 81 VMs running, this averages to 2.03 GB per VM. I will round up to 2.5GB.</p>
+
+<p>At the time of this writing, the server has 380GB of free space remaining.</p>
+
+<p>We therefore have room for 380GB/2.5GB = 152 more VMs.
+Storage is (relative to compute and RAM) cheap and easy to add, especially with the advent of multiterabyte SSDs, so this characteristic is essentially nonlimiting. We have also only filled one of the eight internal ports (two 4x mini-SAS) of the PERC H330</p>
+
+<p>Current storage capability: (152+81 =) 233 VMs</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The lowest theoretical capability in our current configuration is CPU, at 56 VMs of capability</p>
+
+<p>The highest number of VMs that remains stable (as determined empirically) is approximately 83, which is achievable as a result of the kernel&rsquo;s context switching mechanisms increasing throughput and preempting threads which are not being fully utilized.</p>
+
+<p>To address compute limitation in the future we may consider running a hypervisor on this and future VM hosts to potentially reduce this penalty.</p>
+
+<p>In order of significance, these are the characteristics that are limiting in a parallel virutalization context:</p>
+
+<p>CPU -&gt; RAM -&gt; Storage</p>
+
+<p>Under full load, the current build&rsquo;s memory becomes almost completely full, which suggests that our actual bottleneck is RAM usage</p>
+
+<h1 id="upgrades">Upgrades</h1>
+
+<p>Considering the experimental data and also the financial viability of upgrading different components, our best path forward at the moment is to increase the amount of RAM in the current server, as there are no processors in the E5-46xx v4 family that are sufficiently competitive to warrant replacing the four we currently have.</p>
+
+<p>Provisioning the server with two more DIMMs will allow us to assess the impact of the memory bottleneck as it relates to the compute bottleneck</p>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>M393A4K40CB1-CRC (x2)</td>
+<td>$680</td>
+<td><a href="https://www.amazon.com/dp/B01DTJ8EU6">X</a></td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>$680</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="new-builds">New builds</h1>
+
+<p>If we choose to build a new VM host, there are several considerations to be made. Firstly, since compute is the most limiting resource, we must choose processors with a high number of threads.</p>
+
+<p>The following table lists recent (E5 family and above) Intel Xeon processors for which all data was readily available (no blank columns) with a thread count of &gt;28 and a $/thread value of &lt;=100</p>
+
+<p>For processors with price ranges, median price is assumed.</p>
+
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Threads</th>
+<th>Recommended customer price</th>
+<th>$/thread</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Intel® Xeon® Gold 6130 Processor (22M Cache, 2.10 GHz)</td>
+<td>32</td>
+<td>$1,894.00 - $1,900.00</td>
+<td>59.28</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6130F Processor (22M Cache, 2.10 GHz)</td>
+<td>32</td>
+<td>$2,049.00</td>
+<td>64.03</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6130T Processor (22M Cache, 2.10 GHz)</td>
+<td>32</td>
+<td>$1,988.00</td>
+<td>62.12</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6138 Processor (27.5M Cache, 2.00 GHz)</td>
+<td>40</td>
+<td>$2,612.00 - $2,618.00</td>
+<td>65.38</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6138F Processor (27.5M Cache, 2.00 GHz)</td>
+<td>40</td>
+<td>$2,767.00</td>
+<td>69.17</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6138T Processor (27.5M Cache, 2.00 GHz)</td>
+<td>40</td>
+<td>$2,742.00</td>
+<td>68.55</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6140 Processor (24.75M Cache, 2.30 GHz)</td>
+<td>36</td>
+<td>$2,445.00 - $2,451.00</td>
+<td>68.00</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6142 Processor (22M Cache, 2.60 GHz)</td>
+<td>32</td>
+<td>$2,946.00 - $2,952.00</td>
+<td>92.16</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6142F Processor (22M Cache, 2.60 GHz)</td>
+<td>32</td>
+<td>$3,101.00</td>
+<td>96.91</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6148 Processor (27.5M Cache, 2.40 GHz)</td>
+<td>40</td>
+<td>$3,072.00 - $3,078.00</td>
+<td>76.88</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6148F Processor (27.5M Cache, 2.40 GHz)</td>
+<td>40</td>
+<td>$3,227.00</td>
+<td>80.67</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6150 Processor (24.75M Cache, 2.70 GHz)</td>
+<td>36</td>
+<td>$3,358.00</td>
+<td>93.28</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6152 Processor (30.25M Cache, 2.10 GHz)</td>
+<td>44</td>
+<td>$3,655.00 - $3,661.00</td>
+<td>83.14</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Gold 6154 Processor (24.75M Cache, 3.00 GHz)</td>
+<td>36</td>
+<td>$3,543.00</td>
+<td>98.42</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Platinum 8153 Processor (22M Cache, 2.00 GHz)</td>
+<td>32</td>
+<td>$3,115.00</td>
+<td>97.34</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Platinum 8160 Processor (33M Cache, 2.10 GHz)</td>
+<td><strong>48</strong></td>
+<td>$4,702.00 - $4,708.00</td>
+<td>98.02</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2683 v4 (40M Cache, 2.10 GHz)</td>
+<td>32</td>
+<td><strong>$1,846.00</strong></td>
+<td><strong>57.69</strong></td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2695 v4 (45M Cache, 2.10 GHz)</td>
+<td>36</td>
+<td>$2,424.00 - $2,428.00</td>
+<td>67.39</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2697 v4 (45M Cache, 2.30 GHz)</td>
+<td>36</td>
+<td>$2,702.00</td>
+<td>75.06</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2697A v4 (40M Cache, 2.60 GHz)</td>
+<td>32</td>
+<td>$2,891.00</td>
+<td>90.34</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2698 v4 (50M Cache, 2.20 GHz)</td>
+<td>40</td>
+<td>$3,226.00</td>
+<td>80.65</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E5-2699 v4 (55M Cache, 2.20 GHz)</td>
+<td>44</td>
+<td>$4,115.00</td>
+<td>93.52</td>
+</tr>
+
+<tr>
+<td>Intel® Xeon® Processor E7-4850 v4 (40M Cache, 2.10 GHz)</td>
+<td>32</td>
+<td>$3,003.00</td>
+<td>93.84</td>
+</tr>
+</tbody>
+</table>
+
+<p>Firstly, we will want processors that are highly capable of parallel computation. Examining the table above, it is apparent that the Xeon Scalable line of processors (Bronze, Silver, Gold, Platinum) are competitive in both this category as well as the $/thread category, which is a variable we are interested in minimizing.</p>
+
+<p>The processor selected below (Xeon Gold 6152) for the example new build has not only a greater number of threads than the processors we currently use (44 vs 28), but also a more competitive $/thread ratio (83.14 vs 90.54).</p>
+
+<p>Assuming we stay within the Dell server ecosystem, we will require a 14th generation server body, as this generation is the first to support the Xeon Scalable processor family. Of Dell&rsquo;s 14th generation machines, only the R940 supports quad Xeon Scalable processors with the thread counts we need.</p>
+
+<h2 id="current-build-estimated-breakdown">Current build estimated breakdown</h2>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+<th>VM capability</th>
+<th>Link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Poweredge R830 4-socket</td>
+<td>$5,749</td>
+<td></td>
+<td><a href="http://www.dell.com/en-us/work/shop/poweredge-rack-servers/poweredge-r830/spd/poweredge-r830">X</a></td>
+</tr>
+
+<tr>
+<td>Intel Xeon E5-4628L v4 (x4)</td>
+<td>$10,140</td>
+<td>56</td>
+<td><a href="https://ark.intel.com/products/93802/Intel-Xeon-Processor-E5-4628L-v4-35M-Cache-1_80-GHz">X</a></td>
+</tr>
+
+<tr>
+<td>M393A4K40CB1-CRC (x6)</td>
+<td>$2,040</td>
+<td>96</td>
+<td><a href="https://www.amazon.com/dp/B01DTJ8EU6">X</a></td>
+</tr>
+
+<tr>
+<td>Samsung SSD 850 EVO 1TB (x2)</td>
+<td>$700</td>
+<td></td>
+<td><a href="https://www.amazon.com/dp/B00OBRFFAS">X</a></td>
+</tr>
+
+<tr>
+<td>Samsung SSD 850 EVO 2TB (x2)</td>
+<td>$1,500</td>
+<td></td>
+<td><a href="https://www.amazon.com/dp/B010QD6W9I">X</a></td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>$20,129</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Cost/VM: $360</p>
+
+<h2 id="example-new-build-estimated-breakdown">Example new build estimated breakdown</h2>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+<th>VM capability</th>
+<th>Link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Poweredge R940 4-socket</td>
+<td>$8,329</td>
+<td></td>
+<td><a href="http://www.dell.com/en-us/work/shop/cty/pdp/spd/poweredge-r940/pe_r940_12229">X</a></td>
+</tr>
+
+<tr>
+<td>Intel Xeon Gold 6152 (x4)</td>
+<td>$14,632</td>
+<td>96</td>
+<td><a href="https://ark.intel.com/products/93802/Intel-Xeon-Processor-E5-4628L-v4-35M-Cache-1_80-GHz">X</a></td>
+</tr>
+
+<tr>
+<td>M393A4K40CB1-CRC (x12)</td>
+<td>$4,080</td>
+<td>192</td>
+<td><a href="https://www.amazon.com/dp/B01DTJ8EU6">X</a></td>
+</tr>
+
+<tr>
+<td>Samsung SSD 850 EVO 2TB (x4)</td>
+<td>$3,000</td>
+<td></td>
+<td><a href="https://www.amazon.com/dp/B010QD6W9I">X</a></td>
+</tr>
+
+<tr>
+<td>Total</td>
+<td>$30,041</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Cost/VM: $313</p>
+
+<p><em>Prices listed above are up to date as of the time of this writing</em></p>
+
+<h1 id="references">References</h1>
+
+<p><a href="http://topics-cdn.dell.com/pdf/poweredge-r830_owner's%20manual_en-us.pdf">http://topics-cdn.dell.com/pdf/poweredge-r830_owner's%20manual_en-us.pdf</a></p>
+
+<p><a href="http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/Dell-PowerEdge-RAID-Controller-H330.pdf">http://i.dell.com/sites/doccontent/shared-content/data-sheets/en/Documents/Dell-PowerEdge-RAID-Controller-H330.pdf</a></p>
+
+<h1 id="code">Code</h1>
+
+<p>Intel makes processor specification data available for all their product lines - <a href="https://ark.intel.com/">X</a></p>
+
+<p>Their website also includes a very useful tool to compare an arbitrary number of processors, and allows downloading of the comparison data</p>
+
+<p>Excluding any processor belonging to a family below E5 results in 302 processors total - <a href="https://ark.intel.com/compare/?ids=67026,67025,67024,61426,61428,75778,75783,75788,75974,76158,76350,75973,76159,76160,84313,84317,84316,84315,84314,85761,86067,81905,81901,81704,83351,83350,93802,96901,91771,91759,91775,92982,92988,64592,64609,64615,64604,64614,64588,64602,64621,66662,64608,64617,64594,64601,64607,64603,64616,64620,64613,64593,64612,64622,64586,64606,64598,64611,64591,64610,64623,64587,64590,64585,64584,64597,64589,64595,64583,64582,64596,75793,75975,76157,75779,75782,75787,75794,75285,75780,75286,75781,75784,75789,75287,75785,75790,75288,75786,75791,75263,75289,75792,75267,75290,75264,75268,75265,75266,75269,75270,75272,75273,75275,75277,76161,75279,75281,75283,81061,85766,85765,82763,85764,81060,82764,85763,81059,82765,85762,82766,81057,82767,85760,81713,85759,81909,85758,85757,81055,81908,81709,83361,81706,81903,81705,81900,83359,83358,83357,83356,83354,83352,81897,83349,93805,93807,93796,93808,93809,93798,93799,93800,93812,96899,91317,91753,91755,91768,91316,91770,91750,91766,91754,92979,91772,91767,91752,92989,92984,92983,92981,92978,92980,92986,92990,92993,92992,92985,92994,92987,92991,53580,53577,53572,53575,53576,53677,53579,53571,53574,53676,53675,53569,53578,53570,53573,53674,53673,53568,75253,75254,75255,75257,75256,75258,75259,75260,75251,75773,75250,75249,75248,75247,75246,75245,75242,75241,75240,75239,84688,84686,84685,84684,84683,84682,84681,84680,84679,84678,84677,84676,96900,93791,93795,93790,93792,93801,93804,93793,93806,93811,93814,93794,120498,120496,120505,125056,120508,120507,120506,120504,120503,123543,120502,123687,120501,120500,120499,120497,120495,120491,120490,123690,120489,124942,124943,120488,123685,120487,120486,120485,123542,123686,120476,120479,120494,120493,123541,123545,123688,120492,120482,123548,123689,120483,120475,120477,120474,126154,120473,120484,126155,120481,126153,123550,123551,123547,123549,123544,123540,123546">X</a></p>
+
+<p>Downloading the comparison as an XML file is then possible - <a href="https://ark.intel.com/compare?ids=67026,67025,67024,61426,61428,75778,75783,75788,75974,76158,76350,75973,76159,76160,84313,84317,84316,84315,84314,85761,86067,81905,81901,81704,83351,83350,93802,96901,91771,91759,91775,92982,92988,64592,64609,64615,64604,64614,64588,64602,64621,66662,64608,64617,64594,64601,64607,64603,64616,64620,64613,64593,64612,64622,64586,64606,64598,64611,64591,64610,64623,64587,64590,64585,64584,64597,64589,64595,64583,64582,64596,75793,75975,76157,75779,75782,75787,75794,75285,75780,75286,75781,75784,75789,75287,75785,75790,75288,75786,75791,75263,75289,75792,75267,75290,75264,75268,75265,75266,75269,75270,75272,75273,75275,75277,76161,75279,75281,75283,81061,85766,85765,82763,85764,81060,82764,85763,81059,82765,85762,82766,81057,82767,85760,81713,85759,81909,85758,85757,81055,81908,81709,83361,81706,81903,81705,81900,83359,83358,83357,83356,83354,83352,81897,83349,93805,93807,93796,93808,93809,93798,93799,93800,93812,96899,91317,91753,91755,91768,91316,91770,91750,91766,91754,92979,91772,91767,91752,92989,92984,92983,92981,92978,92980,92986,92990,92993,92992,92985,92994,92987,92991,53580,53577,53572,53575,53576,53677,53579,53571,53574,53676,53675,53569,53578,53570,53573,53674,53673,53568,75253,75254,75255,75257,75256,75258,75259,75260,75251,75773,75250,75249,75248,75247,75246,75245,75242,75241,75240,75239,84688,84686,84685,84684,84683,84682,84681,84680,84679,84678,84677,84676,96900,93791,93795,93790,93792,93801,93804,93793,93806,93811,93814,93794,120498,120496,120505,125056,120508,120507,120506,120504,120503,123543,120502,123687,120501,120500,120499,120497,120495,120491,120490,123690,120489,124942,124943,120488,123685,120487,120486,120485,123542,123686,120476,120479,120494,120493,123541,123545,123688,120492,120482,123548,123689,120483,120475,120477,120474,126154,120473,120484,126155,120481,126153,123550,123551,123547,123549,123544,123540,123546&amp;e=t">X</a></p>
+
+<p>To parse the file and display interesting results, the following code was used:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">Soup</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">COMPARISON_FILE</span> <span class="o">=</span> <span class="s2">&#34;/Users/wvesey/Downloads/Intel_ARK_ComparisonChart_2018_03_07.xml&#34;</span>
+
+<span class="c1"># Load and parse the xml file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">COMPARISON_FILE</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Soup</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&#34;xml&#34;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&#34;Worksheet&#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s2">&#34;Row&#34;</span><span class="p">):</span>
+    <span class="n">row_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s2">&#34;Cell&#34;</span><span class="p">):</span>
+        <span class="n">cell_data</span> <span class="o">=</span> <span class="p">(</span><span class="bp">None</span> <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">Data</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">cell</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">row_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Some rows don&#39;t have useful information</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;Name&#34;</span>  <span class="c1"># Processor names have no reference field</span>
+
+<span class="c1"># Transform the data into a dataframe</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)]</span>  <span class="c1"># Transpose to fix xml data being backwards</span>
+<span class="n">colnames</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">colnames</span><span class="p">)</span>
+
+<span class="c1"># Begin selecting interesting processors, discounting those with no price data</span>
+<span class="n">interesting</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&#34;N/A&#34;</span><span class="p">]</span>
+<span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">avg_prices</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Take the center of price data ranges such as &#39;$2600 - $2750&#39;</span>
+<span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;Recommended Customer Price&#34;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">price</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34; - &#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">prices</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34; - &#34;</span><span class="p">)</span>
+        <span class="n">avg_price</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:]))</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">avg_price</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">avg_prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_price</span><span class="p">)</span>
+<span class="n">avg_prices</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">avg_prices</span><span class="p">)</span>
+
+<span class="c1"># Calculate $/thread</span>
+<span class="n">dollars_per_thread</span> <span class="o">=</span> <span class="n">avg_prices</span> <span class="o">/</span> <span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Append calculated data to the dataframe</span>
+<span class="n">interesting</span> <span class="o">=</span> <span class="n">interesting</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">:</span> <span class="n">dollars_per_thread</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">:</span> <span class="n">avg_prices</span><span class="p">})</span>
+
+<span class="c1"># Select processors with &gt;28 threads and a $/thread value of &lt;100</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">interesting</span><span class="p">[(</span><span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;# of Threads&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">28</span><span class="p">)</span> <span class="o">&amp;</span> 
+                       <span class="p">(</span><span class="n">interesting</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)]</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">to_print</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Print succinct information about the processors</span>
+<span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;$/Thread&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="s2">&#34;${:,.2f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;Price&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_print</span><span class="p">[</span><span class="s2">&#34;Price&#34;</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="s2">&#34;${:,.0f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">to_print</span> <span class="o">=</span> <span class="n">to_print</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&#34;Name&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">to_print</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="s2">&#34;$/Thread&#34;</span><span class="p">],</span> 
+                         <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Name&#34;</span><span class="p">,</span> <span class="s2">&#34;# of Threads&#34;</span><span class="p">,</span> <span class="s2">&#34;Price&#34;</span><span class="p">,</span> <span class="s2">&#34;Price/Thread&#34;</span><span class="p">],</span>
+                         <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                         <span class="n">justify</span><span class="o">=</span><span class="s2">&#34;left&#34;</span><span class="p">))</span></code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="/tags/hardware"><span class="tag">Hardware</span></a></li>
+        
+          <li><a href="/tags/work"><span class="tag">Work</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © CC BY-NC 4.0This post was published <strong>110</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 vesey (dot) tech</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="/js/index.js"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-107326162-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>
