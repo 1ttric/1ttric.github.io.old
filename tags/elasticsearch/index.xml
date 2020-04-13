@@ -16,7 +16,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vesey.tech/project/versefind/</guid>
-      <description></description>
+      <description>Ever remember a snatch of lyrics from a song you know you have saved in your Spotify library?
+Ever search for that brief phrase in Google but find only unrelated tracks?
+That can be enough to drive a person crazy. I wrote a tool that lets you search through your library to find these earworms.
+https://versefind.com</description>
     </item>
     
   </channel>
