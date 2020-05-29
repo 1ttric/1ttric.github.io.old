@@ -154,7 +154,7 @@
 <li><a href="https://github.com/tqdm/tqdm">tqdm</a> - A great progress-bar library for the tedious <em>for</em> loops one often encounters when dealing with large datasets</li>
 <li><a href="https://github.com/fchollet/keras">keras</a> - An easy-to-use deep learning tool that can sit on top of several of the most popular Python tensor mathematics libraries (I used Theano for my backend)</li>
 <li><a href="https://github.com/nltk/nltk">nltk</a> - A handy collection of NLP tools</li>
-<li><a href="https://github.com/maciejkula/glove-python">python-glove</a> - I have chosen GloVe over word2vec because of some slight and entirely unsubstantiated performance benefits I read about on the Internet somewhere<sup>[<strong>citation needed</strong>]</sup></li>
+<li><a href="https://github.com/maciejkula/glove-python">python-glove</a> - I have chosen GloVe over word2vec because of some slight and entirely unsubstantiated performance benefits I read about on the Internet somewhere<!-- raw HTML omitted -->[<strong>citation needed</strong>]<!-- raw HTML omitted --></li>
 </ul>
 <h2 id="the-project">The Project</h2>
 <h3 id="parsing">Parsing</h3>
@@ -200,7 +200,7 @@ del facebook, hangouts
 <li>Prepares a list of sentences with both text data and an <em>is_mark</em> boolean, which is fairly self-explanatory. This allows us to build (question, response) tuples later</li>
 <li>Delete references to things we don&rsquo;t need after the fact</li>
 </ul>
-<p><b></b></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <pre><code>&gt;&gt; sentences
 [
  (&quot;Hey mark what's up?&quot;, False),
@@ -230,7 +230,7 @@ print(&quot;{} unfiltered vocabulary words&quot;.format(len(vocab)))
 <li>Counts word frequencies</li>
 </ul>
 <p>By lower-casing the messages, we reduce the vocabulary size, as otherwise &ldquo;Car&rdquo; and &ldquo;car&rdquo; would be interpreted as different words</p>
-<p><b></b></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <pre><code>&gt;&gt; sentences
 [
  ([&quot;hey&quot;, &quot;mark&quot;, &quot;what&quot;, &quot;'s&quot;, &quot;up&quot;, &quot;?&quot;], False),
@@ -272,7 +272,7 @@ print(&quot;{} query/response pairs\n{} vocabulary words&quot;.format(len(exchan
 <ul>
 <li>(query, response) tuples, or <strong>exchanges</strong>, are prepared</li>
 <li>Exchanges with uncommon vocabulary are discarded. In this dataset, uncommon vocabulary mostly manifests in the form of esoteric emoji, which I don&rsquo;t particularly need this conversational model to reproduce.
-<br>
+<!-- raw HTML omitted -->
 Like I said, this data merely represents Mark&rsquo;s unique subset of the English language (or rather, the two sets intersect but also contain elements unique to themselves, as I do not believe &lsquo;😍&rsquo; is in the OED, nor have I ever heard Mark say &lsquo;lexiphanicism&rsquo;, though he is certainly prone to it)</li>
 <li>Beginning-of-sequence and end-of-sequence markers are inserted into the response element, for use later in the neural chatbot model</li>
 <li>Finally, the vocabulary is recomputed to account for the removal of exchanges containing uncommon vocabulary. I could have simply replaced these uncommon words with an unknown-word token, but thought it would be cleaner to not go that route.</li>
