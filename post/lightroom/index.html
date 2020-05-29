@@ -269,17 +269,30 @@ wine64 /lightroom/install/Lightroom.exe
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -SIGINT <span class="nv">$PID_UNISON</span>
 <span class="nb">wait</span> <span class="nv">$PID_UNISON</span>
 </code></pre></div><h2 id="mount-directories">Mount directories</h2>
+<ul>
+<li>
 <p><code>/lightroom/install</code><br>
 This Dockerfile doesn&rsquo;t come with Lightroom <em>included</em>, as that would of course be piracy. Instead, the much more legally viable option is used - mounting in your <em>own</em> Lightroom program directory.<br>
 This directory will likely be found here on a Windows system: <code>C:\Program Files\Adobe\Adobe Lightroom Classic CC</code></p>
+</li>
+<li>
 <p><code>/lightroom/catalog</code><br>
-A directory containing the user&rsquo;s <code>.lrcat</code> file<br>
-Note that if a new <code>.lrcat</code> file is used,</p>
+A directory containing the user&rsquo;s <code>.lrcat</code> file</p>
+</li>
+<li>
 <p><code>/lightroom/config</code>
 An optional directory which allows you to save the configuration and settings of the Lightroom program itself</p>
+</li>
+</ul>
 <h2 id="runtime-directories">Runtime directories</h2>
-<p><code>/tmp/catalog</code><br>
-This is the directory that the <code>/lightroom/catalog</code> directory is synced to, and this is where you must open the catalog file from in the Lightroom user interface.</p>
+<ul>
+<li><code>/tmp/catalog</code><br>
+This is the directory that the <code>/lightroom/catalog</code> directory is synced to, and this is where you must open the catalog file from in the Lightroom user interface.</li>
+</ul>
+<h1 id="result">Result</h1>
+<p>After deploying it on my local Kubernetes cluster and configuring a proper entrypoint, Lightroom is now accessible both over VNC and HTTP from any capable device!</p>
+<p>Enabling hardware acceleration (OpenGL) is left as a future exercise, for now.</p>
+<p><img src="/static/lightroom-browser.png" alt="Lightroom running in a browser"></p>
 </div>
 
     
