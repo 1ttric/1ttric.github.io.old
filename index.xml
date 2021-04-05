@@ -15,7 +15,7 @@
       <guid>https://vesey.tech/project/hddcheap/</guid>
       <description>For homelabbers, locating cheap, shuckable hard drives is an occasional necessity. Amazon doesn&amp;rsquo;t expose an easy API to allow us to scrape drive data. Hddcheap gives you that live data in an easy-to-read grid format.
 (I&amp;rsquo;ve noticed the camelcamelcamel images will not load if you are on a VPN - they are likely blocking known VPN IPs)
-https://hdd.cheap</description>
+https://hddcheap.vesey.tech</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ https://hdd.cheap</description>
       <description>Ever remember a snatch of lyrics from a song you know you have saved in your Spotify library?
 Ever search for that brief phrase in Google but find only unrelated tracks?
 That can be enough to drive a person crazy. I wrote a tool that lets you search through your library to find these earworms.
-https://versefind.com</description>
+https://versefind.vesey.tech</description>
     </item>
     
     <item>
